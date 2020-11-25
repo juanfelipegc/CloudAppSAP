@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+	<html>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCO56qrt0K4xLwkVAwJ3o9JZeCNuKnIOIo &callback=codeAddress&libraries=&v=weekly" defer></script>
+    <!-- jsFiddle will insert css and js -->
+    <script>
+        var map;
+        var geocoder;
+		var address;
+
+        function codeAddress() {
+        	//Set the address to draw in the map
+            address = "2407, McKinney Ave, Dallas, USA";
+            geocoder = new google.maps.Geocoder();
+            map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 15,
+            });
+            geocoder.geocode({ 'address': address }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    map.setCenter(results[0].geometry.location);
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: results[0].geometry.location
+                    });
+                    console.log(results[0].geometry.location);
+                } else {
+                    console.log('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+        }
+    </script>
+    <style>
+        /* Set the size of the div element that contains the map */
+        #map {
+        height: 400px;
+        /* The height is 400 pixels */
+        width: 100%;
+        /* The width is the width of the web page */
+        }
+    </style>
+    <!--The div element for the map -->
+    <div id="map"></div>
+</html>
