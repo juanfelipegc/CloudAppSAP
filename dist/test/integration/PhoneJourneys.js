@@ -1,0 +1,1 @@
+sap.ui.define(["sap/ui/test/Opa5","./arrangements/Startup","./NavigationJourneyPhone","./NotFoundJourneyPhone","./BusyJourneyPhone"],function(e,a){"use strict";e.extendConfig({arrangements:new a,viewNamespace:"com.sap.ua.Gateway_352.view.",autoWait:true})});
